@@ -25,7 +25,7 @@
 
         .card {
             width: 100%;
-            max-width: 500px;
+            max-width: 550px;
             background: #FFFFFF;
             border-radius: 28px;
             box-shadow: 0 25px 50px -12px rgba(12, 24, 75, 0.25);
@@ -309,6 +309,135 @@
             font-weight: 600;
         }
 
+        /* Estilos do formulário */
+        .form-section {
+            margin-top: 28px;
+            border-top: 1px solid rgba(94, 102, 123, 0.2);
+            padding-top: 24px;
+        }
+
+        .form-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0C184B;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-title i {
+            color: #8C52FF;
+            font-size: 18px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            color: #5E667B;
+            margin-bottom: 4px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 14px;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            background: #F8FAFF;
+            border: 1px solid rgba(94, 102, 123, 0.2);
+            border-radius: 12px;
+            color: #181A26;
+            transition: all 0.2s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #8C52FF;
+            background: #FFFFFF;
+            box-shadow: 0 0 0 3px rgba(140, 82, 255, 0.1);
+        }
+
+        .form-control::placeholder {
+            color: #5E667B;
+            opacity: 0.5;
+            font-size: 13px;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-submit {
+            grid-column: span 2;
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 8px;
+        }
+
+        .btn-submit {
+            background: #0C184B;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .btn-submit i {
+            font-size: 14px;
+            transition: transform 0.2s;
+        }
+
+        .btn-submit:hover {
+            background: #8C52FF;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px -4px rgba(140, 82, 255, 0.3);
+        }
+
+        .btn-submit:hover i {
+            transform: translateX(4px);
+        }
+
+        .form-note {
+            grid-column: span 2;
+            font-size: 11px;
+            color: #5E667B;
+            margin-top: 8px;
+            text-align: right;
+            opacity: 0.7;
+        }
+
+        .form-note i {
+            color: #8C52FF;
+            font-size: 10px;
+            margin-right: 4px;
+        }
+
         .footer {
             background: #0C184B;
             padding: 14px 30px;
@@ -338,6 +467,24 @@
             .name-row {
                 flex-wrap: wrap;
             }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            
+            .form-submit {
+                grid-column: span 1;
+                justify-content: center;
+            }
+            
+            .form-note {
+                grid-column: span 1;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -350,8 +497,6 @@
                 <div class="logo-icon">
                     <!-- Substitua a URL abaixo pela URL do seu logo -->
                     <img src="https://avatars.githubusercontent.com/u/129181562" alt="DetecTI">
-                    <!-- Se preferir usar um ícone de texto, descomente a linha abaixo e comente a linha do img -->
-                    <!-- <span>⚡</span> -->
                 </div>
                 
                 <div class="name-row">
@@ -359,8 +504,7 @@
                         Detec<span class="ti-highlight">TI</span>
                     </div>
                     <div class="social-top">
-                        <!-- Ícone oficial do Font Awesome -->
-                        <a href="https://instagram.com/detecti.com.br" target="_blank" title="Instagram">
+                        <a href="https://instagram.com/detecti" target="_blank" title="Instagram">
                             <i class="fa-brands fa-instagram"></i>
                         </a>
                     </div>
@@ -383,30 +527,6 @@
             <div class="contact-grid">
                 <div class="contact-item">
                     <div class="contact-icon">
-                        <i class="fa-solid fa-phone"></i>
-                    </div>
-                    <div class="contact-details">
-                        <div class="contact-label">Telefone</div>
-                        <div class="contact-value">
-                            <a href="tel:+5511999999999">+55 11 99999-9999</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fa-solid fa-envelope"></i>
-                    </div>
-                    <div class="contact-details">
-                        <div class="contact-label">E-mail</div>
-                        <div class="contact-value">
-                            <a href="mailto:contato@detecti.com.br">contato@detecti.com.br</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
                         <i class="fa-solid fa-globe"></i>
                     </div>
                     <div class="contact-details">
@@ -419,12 +539,12 @@
 
                 <div class="contact-item">
                     <div class="contact-icon">
-                        <i class="fa-solid fa-lock"></i>
+                        <i class="fa-brands fa-whatsapp"></i>
                     </div>
                     <div class="contact-details">
-                        <div class="contact-label">Canal Seguro</div>
+                        <div class="contact-label">WhatsApp</div>
                         <div class="contact-value">
-                            <a href="#">Signal / WhatsApp</a>
+                            <a href="https://wa.me/5511999999999">+55 11 99999-9999</a>
                         </div>
                     </div>
                 </div>
@@ -435,6 +555,52 @@
                 <span class="expertise-badge">Pentesting</span>
                 <span class="expertise-badge">Perícia Digital</span>
                 <span class="expertise-badge">Security Assessment</span>
+            </div>
+
+            <!-- Formulário de contato com StaticForms (versão correta da documentação) -->
+            <div class="form-section">
+                <div class="form-title">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    Envie uma mensagem segura
+                </div>
+                
+                <form action="https://api.staticforms.dev/submit" method="POST">
+                    <!-- Required: Your API Key (substitua pela sua) -->
+                    <input type="hidden" name="apiKey" value="sf_5413065ed86gm1ccc81jd9k9" />
+                    
+                    <!-- Opcional: redirect após envio -->
+                    <input type="hidden" name="$redirect" value="https://detecti.com.br/" />
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Nome</label>
+                            <input type="text" name="name" class="form-control" placeholder="Seu nome" required />
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Empresa</label>
+                            <input type="text" name="company" class="form-control" placeholder="Sua empresa" />
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label">E-mail</label>
+                            <input type="email" name="email" class="form-control" placeholder="seu@email.com" required />
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label">Mensagem</label>
+                            <textarea name="message" class="form-control" rows="5" placeholder="Como podemos ajudar?" required></textarea>
+                        </div>
+                        
+                        <div class="form-submit">
+                            <button type="submit" class="btn-submit">
+                                <span>Enviar mensagem</span>
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                      
+                    </div>
+                </form>
             </div>
         </div>
 
