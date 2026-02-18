@@ -1,0 +1,98 @@
+/* Style Settings */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
+
+body {
+    width: 100%;
+    height: 400px;
+    background: url('../images/me_bgV1.png');
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+	
+}
+
+#userPhoto {
+    width: 150px;
+    height: 150px;
+    display: block;
+    margin: 5px auto;
+	margin-top: 7vh;
+    border-radius: 200px;
+}
+
+#userName {
+    color: #fff;
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+}
+
+#userName h1 {
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 0.2rem;
+    margin: 0 auto;
+}
+
+#userName p {
+    font-weight: 300;
+    margin-top: -20px;
+    text-transform: none;
+}
+
+i.fa {
+    margin-right: 0.3rem;
+}
+
+
+#links {
+    max-width: 400px;
+    width: auto;
+    display: block;
+    margin: 20px auto;
+}
+
+.link {
+    display: block;
+    background-color: #851e1e;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 17px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 300;
+    transition: all .25s cubic-bezier(.08, .59, .29, .99);
+    border-radius: 10px;
+
+
+}
+
+.social-icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: #ff0000; /* Azul do Facebook */
+    color: #fff; /* Cor do ícone */
+    text-align: center;
+    line-height: 40px; /* Centraliza verticalmente */
+    border-radius: 50%; /* Forma circular */
+    font-size: 20px; /* Tamanho do ícone */
+    margin-right: 30px; /* Espaçamento à direita */
+	margin-bottom: 20px;
+    transition: background-color 0.3s ease; /* Transição suave */
+}
+
+.social-icon:hover {
+    background-color: #520404; /* Altera a cor do fundo ao passar o mouse */
+}
+
+.container {
+    text-align: center; /* Centraliza os ícones horizontalmente */
+}
+
+.link:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #000000;
+    border: none;
+}

