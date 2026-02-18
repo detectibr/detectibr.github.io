@@ -504,7 +504,7 @@
                         Detec<span class="ti-highlight">TI</span>
                     </div>
                     <div class="social-top">
-                        <a href="https://instagram.com/detecti" target="_blank" title="Instagram">
+                        <a href="https://instagram.com/detecti.com.br" target="_blank" title="Instagram">
                             <i class="fa-brands fa-instagram"></i>
                         </a>
                     </div>
@@ -557,48 +557,47 @@
                 <span class="expertise-badge">Security Assessment</span>
             </div>
 
-            <!-- Formulário de contato com StaticForms (versão correta da documentação) -->
+            <!-- Formulário de contato com StaticForms - Versão corrigida com JavaScript -->
             <div class="form-section">
                 <div class="form-title">
                     <i class="fa-solid fa-shield-halved"></i>
                     Envie uma mensagem segura
                 </div>
                 
-                <form action="https://api.staticforms.dev/submit" method="POST">
-                    <!-- Required: Your API Key (substitua pela sua) -->
-                    <input type="hidden" name="apiKey" value="sf_5413065ed86gm1ccc81jd9k9" />
-                    
-                    <!-- Opcional: redirect após envio -->
-                    <input type="hidden" name="$redirect" value="https://detecti.com.br/" />
+                <!-- Removido action e method - agora usamos JavaScript -->
+                <form id="staticForm" onsubmit="return false;">
+                    <!-- API Key (agora como data attribute ou hidden) -->
+                    <input type="hidden" id="apiKey" value="sf_5413065ed86gm1ccc81jd9k9" />
                     
                     <div class="form-grid">
                         <div class="form-group">
                             <label class="form-label">Nome</label>
-                            <input type="text" name="name" class="form-control" placeholder="Seu nome" required />
+                            <input type="text" id="name" class="form-control" placeholder="Seu nome" required />
                         </div>
                         
                         <div class="form-group">
                             <label class="form-label">Empresa</label>
-                            <input type="text" name="company" class="form-control" placeholder="Sua empresa" />
+                            <input type="text" id="company" class="form-control" placeholder="Sua empresa" />
                         </div>
                         
                         <div class="form-group full-width">
                             <label class="form-label">E-mail</label>
-                            <input type="email" name="email" class="form-control" placeholder="seu@email.com" required />
+                            <input type="email" id="email" class="form-control" placeholder="seu@email.com" required />
                         </div>
                         
                         <div class="form-group full-width">
                             <label class="form-label">Mensagem</label>
-                            <textarea name="message" class="form-control" rows="5" placeholder="Como podemos ajudar?" required></textarea>
+                            <textarea id="message" class="form-control" rows="5" placeholder="Como podemos ajudar?" required></textarea>
                         </div>
                         
                         <div class="form-submit">
-                            <button type="submit" class="btn-submit">
+                            <!-- Botão agora é type="button" e chama a função -->
+                            <button type="button" onclick="submitForm()" class="btn-submit">
                                 <span>Enviar mensagem</span>
                                 <i class="fa-solid fa-arrow-right"></i>
                             </button>
                         </div>
-                      
+                        
                     </div>
                 </form>
             </div>
@@ -612,5 +611,74 @@
             </div>
         </div>
     </div>
+
+    <!-- Script para envio do formulário -->
+    <script>
+    function submitForm() {
+        // Pega os valores dos campos
+        const apiKey = document.getElementById('apiKey').value;
+        const name = document.getElementById('name').value;
+        const company = document.getElementById('company').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        
+        // Validação básica
+        if (!name || !email || !message) {
+            alert('Por favor, preencha todos os campos obrigatórios');
+            return;
+        }
+        
+        // Validação simples de email
+        if (!email.includes('@') || !email.includes('.')) {
+            alert('Por favor, insira um e-mail válido');
+            return;
+        }
+        
+        // Pega o botão para feedback visual
+        const btn = event.target;
+        const originalText = btn.innerHTML;
+        
+        // Mostra loading
+        btn.innerHTML = '<span>Enviando...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
+        btn.disabled = true;
+        
+        // Prepara os dados para envio
+        const data = {
+            apiKey: apiKey,
+            name: name,
+            company: company,
+            email: email,
+            message: message
+        };
+        
+        // Envia via fetch
+        fetch('https://api.staticforms.dev/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('✓ Mensagem enviada com sucesso! Entraremos em contato em breve.');
+                // Limpa o formulário
+                document.getElementById('staticForm').reset();
+            } else {
+                alert('Erro ao enviar mensagem. Tente novamente.');
+            }
+        })
+        .catch(error => {
+            alert('Erro de conexão. Verifique sua internet e tente novamente.');
+            console.error('Erro:', error);
+        })
+        .finally(() => {
+            // Restaura o botão
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        });
+    }
+    </script>
 </body>
 </html>
