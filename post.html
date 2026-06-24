@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artigo | DetecTI Segurança Digital</title>
+    <!-- Font Awesome 6 (Free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts - Inter -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;display=swap"
+        rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- CSS do site -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- Marked.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.0.0/marked.min.js"></script>
+    <!-- Prism.js para syntax highlighting (opcional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+
+    <style>
+        /* Estilos específicos do post */
+        .post-header {
+            padding: 40px 0 30px;
+            border-bottom: 1px solid rgba(140, 82, 255, 0.15);
+            margin-bottom: 40px;
+        }
+
+        .post-header .post-tags {
+            margin: 16px 0;
+        }
+
+        .post-header .post-tags .tag {
+            font-size: 12px;
+            padding: 4px 12px;
+        }
+
+        .post-header .post-meta {
+            color: #b0b0c0;
+            font-size: 14px;
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .post-header .post-meta i {
+            color: #8C52FF;
+            margin-right: 6px;
+        }
+
+        .post-content {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .post-content h1,
+        .post-content h2,
+        .post-content h3 {
+            color: #ffffff;
+            margin: 32px 0 16px;
+        }
+
+        .post-content h1 {
+            font-size: 32px;
+        }
+        .post-content h2 {
+            font-size: 26px;
+        }
+        .post-content h3 {
+            font-size: 20px;
+        }
+
+        .post-content p {
+            color: #c8c8d0;
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .post-content ul,
+        .post-content ol {
+            color: #c8c8d0;
+            margin: 16px 0 20px 24px;
+        }
+
+        .post-content li {
+            margin-bottom: 8px;
+        }
+
+        .post-content pre {
+            background: #1a1a24;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 24px 0;
+            overflow-x: auto;
+            border: 1px solid rgba(140, 82, 255, 0.15);
+        }
+
+        .post-content code {
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+        }
+
+        .post-content blockquote {
+            border-left: 4px solid #8C52FF;
+            padding: 16px 24px;
+            background: rgba(140, 82, 255, 0.05);
+            border-radius: 0 12px 12px 0;
+            margin: 24px 0;
+            color: #b0b0c0;
+        }
+
+        .post-content img {
+            max-width: 100%;
+            border-radius: 12px;
+            margin: 24px 0;
+            border: 1px solid rgba(140, 82, 255, 0.1);
+        }
+
+        .post-content .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #8C52FF;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 40px;
+            padding: 12px 24px;
+            border: 1px solid rgba(140, 82, 255, 0.2);
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+
+        .post-content .back-link:hover {
+            background: rgba(140, 82, 255, 0.1);
+            transform: translateX(-4px);
+        }
+
+        .post-loading {
+            text-align: center;
+            padding: 80px 0;
+            color: #b0b0c0;
+        }
+
+        .post-loading i {
+            font-size: 48px;
+            color: #8C52FF;
+            margin-bottom: 16px;
+        }
+
+        .post-error {
+            text-align: center;
+            padding: 80px 0;
+            color: #b0b0c0;
+        }
+
+        .post-error i {
+            font-size: 48px;
+            color: #ff6b6b;
+            margin-bottom: 16px;
+        }
+
+        .post-error a {
+            color: #8C52FF;
+            text-decoration: none;
+        }
+
+        /* Tema claro - post */
+        body.light-theme .post-content h1,
+        body.light-theme .post-content h2,
+        body.light-theme .post-content h3 {
+            color: #0C184B;
+        }
+
+        body.light-theme .post-content p,
+        body.light-theme .post-content ul,
+        body.light-theme .post-content ol {
+            color: #5E667B;
+        }
+
+        body.light-theme .post-content pre {
+            background: #f0f0f5;
+        }
+
+        body.light-theme .post-content blockquote {
+            background: rgba(140, 82, 255, 0.03);
+        }
+
+        body.light-theme .post-header .post-meta {
+            color: #5E667B;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .post-content {
+                padding: 0 16px;
+            }
+            .post-content h1 {
+                font-size: 26px;
+            }
+            .post-content h2 {
+                font-size: 22px;
+            }
+            .post-content p {
+                font-size: 15px;
+            }
+            .post-header .post-meta {
+                gap: 12px;
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar (igual ao index) -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-logo">
+                <img src="https://avatars.githubusercontent.com/u/129181562" alt="DetecTI">
+                <span>Detec<span class="ti-highlight">TI</span> Segurança Digital</span>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="/#home">Início</a></li>
+                <li><a href="/#conteudo">Conteúdo</a></li>
+                <li><a href="/#sobre">Sobre</a></li>
+                <li><a href="/blog.html">Blog</a></li>
+                <li><a href="/#comunidade">Comunidade</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <div class="nav-social">
+                    <a href="https://instagram.com/detecti.com.br" target="_blank" title="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://github.com/detectibr" target="_blank" title="GitHub">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@lucas.s" target="_blank" title="YouTube">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                </div>
+                <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section id="post">
+            <div class="container">
+                <div id="post-container">
+                    <div class="post-loading">
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+                        <p>Carregando artigo...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (igual ao index) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-logo">
+                    <img src="https://avatars.githubusercontent.com/u/129181562" alt="DetecTI">
+                    <p>Detectar fraquezas, proteger o que importa. Conhecimento em segurança digital para todos.</p>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Conteúdo</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Fundamentos de Pentest</a></li>
+                        <li><a href="#">Ferramentas e Exploração</a></li>
+                        <li><a href="#">Análise de Malware</a></li>
+                        <li><a href="#">Engenharia Social</a></li>
+                        <li><a href="#">Privacidade na Prática</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-title">Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">LGPD</a></li>
+                        <li><a href="#">Código de Ética</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 DetecTI Segurança Digital. Todos os direitos reservados. Conteúdo e Pesquisa em Segurança Digital.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Função para alternar tema (mesma do index)
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.querySelector('.theme-toggle i');
+
+            body.classList.toggle('light-theme');
+
+            if (body.classList.contains('light-theme')) {
+                themeIcon.className = 'fa-solid fa-moon';
+                localStorage.setItem('theme', 'light');
+            } else {
+                themeIcon.className = 'fa-solid fa-sun';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Verificar tema salvo (padrão dark)
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-theme');
+            document.querySelector('.theme-toggle i').className = 'fa-solid fa-moon';
+        } else {
+            document.body.classList.remove('light-theme');
+            document.querySelector('.theme-toggle i').className = 'fa-solid fa-sun';
+        }
+
+        // ============ POST FUNCTIONS ============
+
+        // Mapeamento de slugs para arquivos (mantenha sincronizado com o blog.html)
+        const postFiles = {
+            'introducao-pentest': '_posts/introducao-pentest.md',
+            'ferramentas-nmap': '_posts/ferramentas-nmap.md',
+            'engenharia-social': '_posts/engenharia-social.md',
+            'analise-malware': '_posts/analise-malware.md'
+        };
+
+        // Metadados dos posts (para título, tags, etc)
+        const postsMeta = {
+            'introducao-pentest': {
+                title: 'Introdução ao Pentest: Primeiros Passos',
+                date: '2026-06-22',
+                tags: ['Pentest', 'Iniciante'],
+                readTime: '5 min de leitura'
+            },
+            'ferramentas-nmap': {
+                title: 'Nmap: A Ferramenta Essencial para Reconhecimento',
+                date: '2026-06-20',
+                tags: ['Ferramentas', 'Reconhecimento'],
+                readTime: '7 min de leitura'
+            },
+            'engenharia-social': {
+                title: 'Engenharia Social: O Fator Humano na Segurança',
+                date: '2026-06-18',
+                tags: ['Engenharia Social', 'Segurança'],
+                readTime: '6 min de leitura'
+            },
+            'analise-malware': {
+                title: 'Análise de Malware para Iniciantes',
+                date: '2026-06-15',
+                tags: ['Malware', 'Forensics'],
+                readTime: '8 min de leitura'
+            }
+        };
+
+        // Função para carregar e renderizar o post
+        async function loadPost() {
+            const container = document.getElementById('post-container');
+
+            // Pega o slug da URL
+            const params = new URLSearchParams(window.location.search);
+            const slug = params.get('slug');
+
+            if (!slug) {
+                container.innerHTML = `
+                    <div class="post-error">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <p>Nenhum artigo especificado.</p>
+                        <a href="/blog.html"><i class="fa-solid fa-arrow-left"></i> Voltar para o blog</a>
+                    </div>
+                `;
+                return;
+            }
+
+            const file = postFiles[slug];
+            const meta = postsMeta[slug];
+
+            if (!file || !meta) {
+                container.innerHTML = `
+                    <div class="post-error">
+                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <p>Artigo não encontrado.</p>
+                        <a href="/blog.html"><i class="fa-solid fa-arrow-left"></i> Voltar para o blog</a>
+                    </div>
+                `;
+                return;
+            }
+
+            try {
+                const response = await fetch(file);
+                if (!response.ok) throw new Error('Arquivo não encontrado');
+                const markdown = await response.text();
+
+                // Converte Markdown para HTML
+                const htmlContent = marked.parse(markdown);
+
+                const dateObj = new Date(meta.date);
+                const formattedDate = dateObj.toLocaleDateString('pt-BR', {
+                    day: '2-digit',
+                    month: 'long',
+                    year: 'numeric'
+                });
+
+                const tagsHTML = meta.tags.map(tag => 
+                    `<span class="tag">${tag}</span>`
+                ).join('');
+
+                container.innerHTML = `
+                    <article class="post-content animate__animated animate__fadeInUp">
+                        <div class="post-header">
+                            <h1 style="font-size: 38px; color: #ffffff; margin-bottom: 12px;">${meta.title}</h1>
+                            <div class="post-tags">${tagsHTML}</div>
+                            <div class="post-meta">
+                                <span><i class="fa-regular fa-calendar"></i> ${formattedDate}</span>
+                                <span><i class="fa-regular fa-clock"></i> ${meta.readTime}</span>
+                            </div>
+                        </div>
+                        <div class="post-body">
+                            ${htmlContent}
+                        </div>
+                        <a href="/blog.html" class="back-link">
+                            <i class="fa-solid fa-arrow-left"></i> Voltar para o blog
+                        </a>
+                    </article>
+                `;
+
+                // Aplica syntax highlighting se tiver código
+                if (typeof Prism !== 'undefined') {
+                    Prism.highlightAll();
+                }
+
+            } catch (error) {
+                console.error('Erro ao carregar o post:', error);
+                container.innerHTML = `
+                    <div class="post-error">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <p>Erro ao carregar o artigo. Tente novamente mais tarde.</p>
+                        <a href="/blog.html"><i class="fa-solid fa-arrow-left"></i> Voltar para o blog</a>
+                    </div>
+                `;
+            }
+        }
+
+        // Carrega o post quando a página carregar
+        document.addEventListener('DOMContentLoaded', loadPost);
+    </script>
+    <script defer
+        src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+        integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
+        data-cf-beacon='{"rayId":"9d58f6cffc1b3ea7","version":"2025.9.1","r":1,"token":"52bb7009bda84e0b8e943373c7eeeed6","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}'
+        crossorigin="anonymous
