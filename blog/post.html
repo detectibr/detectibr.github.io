@@ -14,10 +14,10 @@
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!-- CSS do site -->
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <!-- Marked.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.0.0/marked.min.js"></script>
-    <!-- Prism.js para syntax highlighting (opcional) -->
+    <!-- Prism.js para syntax highlighting -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
@@ -220,7 +220,7 @@
 </head>
 
 <body>
-    <!-- Navbar (igual ao index) -->
+    <!-- Navbar -->
     <nav class="navbar">
         <div class="navbar-container">
             <div class="navbar-logo">
@@ -232,7 +232,7 @@
                 <li><a href="/#home">Início</a></li>
                 <li><a href="/#conteudo">Conteúdo</a></li>
                 <li><a href="/#sobre">Sobre</a></li>
-                <li><a href="/blog">Blog</a></li>
+                <li><a href="/blog/">Blog</a></li>
                 <li><a href="/#comunidade">Comunidade</a></li>
             </ul>
 
@@ -268,7 +268,7 @@
         </section>
     </main>
 
-    <!-- Footer (igual ao index) -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -307,7 +307,7 @@
 
     <!-- Scripts -->
     <script>
-        // Função para alternar tema (mesma do index)
+        // ===== FUNÇÃO PARA ALTERNAR TEMA =====
         function toggleTheme() {
             const body = document.body;
             const themeIcon = document.querySelector('.theme-toggle i');
@@ -323,7 +323,7 @@
             }
         }
 
-        // Verificar tema salvo (padrão dark)
+        // ===== VERIFICAR TEMA SALVO (PADRÃO DARK) =====
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
             document.body.classList.add('light-theme');
@@ -333,47 +333,13 @@
             document.querySelector('.theme-toggle i').className = 'fa-solid fa-sun';
         }
 
-        // ============ POST FUNCTIONS ============
+        // ============================================================
+        // ===== POST 100% DINÂMICO - LENDO DO _post/index.json =====
+        // ============================================================
 
-        // Mapeamento de slugs para arquivos (mantenha sincronizado com o blog.html)
-        const postFiles = {
-            'introducao-pentest': '_posts/introducao-pentest.md',
-            'ferramentas-nmap': '_posts/ferramentas-nmap.md',
-            'engenharia-social': '_posts/engenharia-social.md',
-            'analise-malware': '_posts/analise-malware.md'
-        };
-
-        // Metadados dos posts (para título, tags, etc)
-        const postsMeta = {
-            'introducao-pentest': {
-                title: 'Introdução ao Pentest: Primeiros Passos',
-                date: '2026-06-22',
-                tags: ['Pentest', 'Iniciante'],
-                readTime: '5 min de leitura'
-            },
-            'ferramentas-nmap': {
-                title: 'Nmap: A Ferramenta Essencial para Reconhecimento',
-                date: '2026-06-20',
-                tags: ['Ferramentas', 'Reconhecimento'],
-                readTime: '7 min de leitura'
-            },
-            'engenharia-social': {
-                title: 'Engenharia Social: O Fator Humano na Segurança',
-                date: '2026-06-18',
-                tags: ['Engenharia Social', 'Segurança'],
-                readTime: '6 min de leitura'
-            },
-            'analise-malware': {
-                title: 'Análise de Malware para Iniciantes',
-                date: '2026-06-15',
-                tags: ['Malware', 'Forensics'],
-                readTime: '8 min de leitura'
-            }
-        };
-
-        // Função para carregar e renderizar o post
         async function loadPost() {
             const container = document.getElementById('post-container');
+            if (!container) return;
 
             // Pega o slug da URL
             const params = new URLSearchParams(window.location.search);
@@ -384,65 +350,66 @@
                     <div class="post-error">
                         <i class="fa-solid fa-circle-exclamation"></i>
                         <p>Nenhum artigo especificado.</p>
-                        <a href="/blog"><i class="fa-solid fa-arrow-left"></i> Voltar para o blog</a>
-                    </div>
-                `;
-                return;
-            }
-
-            const file = postFiles[slug];
-            const meta = postsMeta[slug];
-
-            if (!file || !meta) {
-                container.innerHTML = `
-                    <div class="post-error">
-                        <i class="fa-solid fa-circle-exclamation"></i>
-                        <p>Artigo não encontrado.</p>
-                        <a href="/blog"><i class="fa-solid fa-arrow-left"></i> Voltar para o blog</a>
+                        <a href="/blog/"><i class="fa-solid fa-arrow-left"></i> Voltar para o blog</a>
                     </div>
                 `;
                 return;
             }
 
             try {
-                const response = await fetch(file);
-                if (!response.ok) throw new Error('Arquivo não encontrado');
-                const markdown = await response.text();
+                // 1. Carrega o index.json para pegar os metadados
+                const indexResponse = await fetch('_post/index.json');
+                if (!indexResponse.ok) throw new Error('Arquivo index.json não encontrado');
+                const posts = await indexResponse.json();
 
-                // Converte Markdown para HTML
+                // 2. Encontra o post pelo slug
+                const postMeta = posts.find(p => p.slug === slug);
+                if (!postMeta) {
+                    throw new Error(`Post com slug "${slug}" não encontrado`);
+                }
+
+                // 3. Carrega o arquivo .md do post
+                const mdResponse = await fetch(`_post/${slug}.md`);
+                if (!mdResponse.ok) throw new Error('Arquivo .md não encontrado');
+                const markdown = await mdResponse.text();
+
+                // 4. Converte Markdown para HTML
                 const htmlContent = marked.parse(markdown);
 
-                const dateObj = new Date(meta.date);
+                // 5. Formata a data
+                const dateObj = new Date(postMeta.date);
                 const formattedDate = dateObj.toLocaleDateString('pt-BR', {
                     day: '2-digit',
                     month: 'long',
                     year: 'numeric'
                 });
 
-                const tagsHTML = meta.tags.map(tag => 
+                // 6. Gera as tags HTML
+                const tagsHTML = (postMeta.tags || []).map(tag => 
                     `<span class="tag">${tag}</span>`
                 ).join('');
 
+                // 7. Renderiza o post
                 container.innerHTML = `
                     <article class="post-content animate__animated animate__fadeInUp">
                         <div class="post-header">
-                            <h1 style="font-size: 38px; color: #ffffff; margin-bottom: 12px;">${meta.title}</h1>
+                            <h1 style="font-size: 38px; color: #ffffff; margin-bottom: 12px;">${postMeta.title}</h1>
                             <div class="post-tags">${tagsHTML}</div>
                             <div class="post-meta">
                                 <span><i class="fa-regular fa-calendar"></i> ${formattedDate}</span>
-                                <span><i class="fa-regular fa-clock"></i> ${meta.readTime}</span>
+                                <span><i class="fa-regular fa-clock"></i> 5 min de leitura</span>
                             </div>
                         </div>
                         <div class="post-body">
                             ${htmlContent}
                         </div>
-                        <a href="/blog" class="back-link">
+                        <a href="/blog/" class="back-link">
                             <i class="fa-solid fa-arrow-left"></i> Voltar para o blog
                         </a>
                     </article>
                 `;
 
-                // Aplica syntax highlighting se tiver código
+                // 8. Aplica syntax highlighting se disponível
                 if (typeof Prism !== 'undefined') {
                     Prism.highlightAll();
                 }
@@ -453,20 +420,18 @@
                     <div class="post-error">
                         <i class="fa-solid fa-triangle-exclamation"></i>
                         <p>Erro ao carregar o artigo. Tente novamente mais tarde.</p>
-                        <a href="/blog"><i class="fa-solid fa-arrow-left"></i> Voltar para o blog</a>
+                        <p style="font-size: 13px; margin-top: 8px; color: #666;">Slug: ${slug}</p>
+                        <a href="/blog/" style="display: inline-block; margin-top: 20px; color: #8C52FF; text-decoration: none;">
+                            <i class="fa-solid fa-arrow-left"></i> Voltar para o blog
+                        </a>
                     </div>
                 `;
             }
         }
 
-        // Carrega o post quando a página carregar
+        // ===== INICIALIZAR =====
         document.addEventListener('DOMContentLoaded', loadPost);
     </script>
-    <script defer
-        src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
-        integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
-        data-cf-beacon='{"rayId":"9d58f6cffc1b3ea7","version":"2025.9.1","r":1,"token":"52bb7009bda84e0b8e943373c7eeeed6","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}'
-        crossorigin="anonymous"></script>
 </body>
 
 </html>
