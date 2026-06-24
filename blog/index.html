@@ -337,7 +337,7 @@
         }
 
         // ============================================================
-        // ===== BLOG 100% DINÂMICO - LENDO DO _posts/index.json =====
+        // ===== BLOG 100% DINÂMICO - LENDO DO _post/index.json =====
         // ============================================================
 
         // Função para carregar os posts a partir do index.json
@@ -347,7 +347,7 @@
 
             try {
                 // Carrega a lista de posts do index.json
-                const response = await fetch('_posts/index.json');
+                const response = await fetch('_post/index.json');
                 if (!response.ok) throw new Error('Arquivo index.json não encontrado');
                 const posts = await response.json();
 
@@ -355,7 +355,7 @@
                 const postsWithContent = await Promise.all(
                     posts.map(async (post) => {
                         try {
-                            const mdResponse = await fetch(`_posts/${post.slug}.md`);
+                            const mdResponse = await fetch(`_post/${post.slug}.md`);
                             if (!mdResponse.ok) throw new Error('Arquivo .md não encontrado');
                             const markdown = await mdResponse.text();
                             
@@ -384,7 +384,7 @@
                     <div class="no-posts">
                         <i class="fa-solid fa-triangle-exclamation"></i>
                         <p>Erro ao carregar os artigos. Tente novamente mais tarde.</p>
-                        <p style="font-size: 13px; margin-top: 8px; color: #666;">Verifique se o arquivo _posts/index.json existe.</p>
+                        <p style="font-size: 13px; margin-top: 8px; color: #666;">Verifique se o arquivo _post/index.json existe.</p>
                     </div>
                 `;
             }
