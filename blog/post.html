@@ -13,8 +13,8 @@
         rel="stylesheet">
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <!-- CSS do site -->
-    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- CSS do site - CAMINHO CORRETO PARA A RAIZ -->
+    <link rel="stylesheet" href="/assets/css/style.css">
     <!-- Marked.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.0.0/marked.min.js"></script>
     <!-- Prism.js para syntax highlighting -->
@@ -25,7 +25,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
 
     <style>
-        /* Estilos específicos do post */
         .post-header {
             padding: 40px 0 30px;
             border-bottom: 1px solid rgba(140, 82, 255, 0.15);
@@ -172,7 +171,7 @@
             text-decoration: none;
         }
 
-        /* Tema claro - post */
+        /* Tema claro */
         body.light-theme .post-content h1,
         body.light-theme .post-content h2,
         body.light-theme .post-content h3 {
@@ -197,7 +196,6 @@
             color: #5E667B;
         }
 
-        /* Responsividade */
         @media (max-width: 768px) {
             .post-content {
                 padding: 0 16px;
@@ -305,9 +303,7 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script>
-        // ===== FUNÇÃO PARA ALTERNAR TEMA =====
         function toggleTheme() {
             const body = document.body;
             const themeIcon = document.querySelector('.theme-toggle i');
@@ -323,7 +319,6 @@
             }
         }
 
-        // ===== VERIFICAR TEMA SALVO (PADRÃO DARK) =====
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
             document.body.classList.add('light-theme');
@@ -333,15 +328,10 @@
             document.querySelector('.theme-toggle i').className = 'fa-solid fa-sun';
         }
 
-        // ============================================================
-        // ===== POST 100% DINÂMICO - LENDO DO _post/index.json =====
-        // ============================================================
-
         async function loadPost() {
             const container = document.getElementById('post-container');
             if (!container) return;
 
-            // Pega o slug da URL
             const params = new URLSearchParams(window.location.search);
             const slug = params.get('slug');
 
@@ -357,26 +347,21 @@
             }
 
             try {
-                // 1. Carrega o index.json para pegar os metadados
                 const indexResponse = await fetch('_post/index.json');
                 if (!indexResponse.ok) throw new Error('Arquivo index.json não encontrado');
                 const posts = await indexResponse.json();
 
-                // 2. Encontra o post pelo slug
                 const postMeta = posts.find(p => p.slug === slug);
                 if (!postMeta) {
                     throw new Error(`Post com slug "${slug}" não encontrado`);
                 }
 
-                // 3. Carrega o arquivo .md do post
                 const mdResponse = await fetch(`_post/${slug}.md`);
                 if (!mdResponse.ok) throw new Error('Arquivo .md não encontrado');
                 const markdown = await mdResponse.text();
 
-                // 4. Converte Markdown para HTML
                 const htmlContent = marked.parse(markdown);
 
-                // 5. Formata a data
                 const dateObj = new Date(postMeta.date);
                 const formattedDate = dateObj.toLocaleDateString('pt-BR', {
                     day: '2-digit',
@@ -384,12 +369,10 @@
                     year: 'numeric'
                 });
 
-                // 6. Gera as tags HTML
-                const tagsHTML = (postMeta.tags || []).map(tag => 
+                const tagsHTML = (postMeta.tags || []).map(tag =>
                     `<span class="tag">${tag}</span>`
                 ).join('');
 
-                // 7. Renderiza o post
                 container.innerHTML = `
                     <article class="post-content animate__animated animate__fadeInUp">
                         <div class="post-header">
@@ -409,7 +392,6 @@
                     </article>
                 `;
 
-                // 8. Aplica syntax highlighting se disponível
                 if (typeof Prism !== 'undefined') {
                     Prism.highlightAll();
                 }
@@ -429,7 +411,6 @@
             }
         }
 
-        // ===== INICIALIZAR =====
         document.addEventListener('DOMContentLoaded', loadPost);
     </script>
 </body>
