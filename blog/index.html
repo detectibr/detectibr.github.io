@@ -336,77 +336,55 @@
             document.querySelector('.theme-toggle i').className = 'fa-solid fa-moon';
         }
 
-        // ===== DADOS DOS POSTS =====
-        const posts = [
-            {
-                slug: 'introducao-pentest',
-                title: 'Introdução ao Pentest: Primeiros Passos',
-                excerpt: 'Aprenda os conceitos fundamentais do teste de invasão e como começar sua jornada na segurança ofensiva.',
-                date: '2026-06-21',
-                tags: ['Pentest', 'Iniciante'],
-                file: '_posts/introducao-pentest.md'
-            },
-            {
-                slug: 'ferramentas-nmap',
-                title: 'Nmap: A Ferramenta Essencial para Reconhecimento',
-                excerpt: 'Domine o Nmap e aprenda a mapear redes, descobrir hosts e identificar serviços como um profissional.',
-                date: '2026-06-19',
-                tags: ['Ferramentas', 'Reconhecimento'],
-                file: '_posts/ferramentas-nmap.md'
-            },
-            {
-                slug: 'engenharia-social',
-                title: 'Engenharia Social: O Fator Humano na Segurança',
-                excerpt: 'Entenda como ataques exploram o comportamento humano e aprenda a se proteger dessas ameaças.',
-                date: '2026-06-17',
-                tags: ['Engenharia Social', 'Segurança'],
-                file: '_posts/engenharia-social.md'
-            },
-            {
-                slug: 'analise-malware',
-                title: 'Análise de Malware para Iniciantes',
-                excerpt: 'Conheça as técnicas básicas para analisar malwares e identificar comportamentos maliciosos.',
-                date: '2026-06-14',
-                tags: ['Malware', 'Forensics'],
-                file: '_posts/analise-malware.md'
-            }
-        ];
+        // ============================================================
+        // ===== BLOG 100% DINÂMICO - LENDO DO _posts/index.json =====
+        // ============================================================
 
-        // ===== CARREGAR E RENDERIZAR OS POSTS =====
+        // Função para carregar os posts a partir do index.json
         async function loadPosts() {
             const container = document.getElementById('posts-container');
             if (!container) return;
 
             try {
-                // Busca o conteúdo de cada post
+                // Carrega a lista de posts do index.json
+                const response = await fetch('_posts/index.json');
+                if (!response.ok) throw new Error('Arquivo index.json não encontrado');
+                const posts = await response.json();
+
+                // Para cada post, carrega o conteúdo do arquivo .md
                 const postsWithContent = await Promise.all(
                     posts.map(async (post) => {
                         try {
-                            const response = await fetch(post.file);
-                            if (!response.ok) throw new Error('Arquivo não encontrado');
-                            const markdown = await response.text();
+                            const mdResponse = await fetch(`_posts/${post.slug}.md`);
+                            if (!mdResponse.ok) throw new Error('Arquivo .md não encontrado');
+                            const markdown = await mdResponse.text();
+                            
+                            // Converte Markdown para HTML
                             const htmlContent = marked.parse(markdown);
-
-                            const tempDiv = document.createElement('div');
-                            tempDiv.innerHTML = htmlContent;
-                            const firstParagraph = tempDiv.querySelector('p');
-                            const excerpt = post.excerpt || (firstParagraph ? firstParagraph.textContent.substring(0, 200) + '...' : '');
-
-                            return { ...post, content: htmlContent, excerpt };
+                            
+                            return {
+                                ...post,
+                                content: htmlContent
+                            };
                         } catch (error) {
-                            console.error(`Erro ao carregar ${post.file}:`, error);
-                            return { ...post, content: '<p>Conteúdo indisponível.</p>', excerpt: 'Conteúdo indisponível.' };
+                            console.error(`Erro ao carregar ${post.slug}:`, error);
+                            return {
+                                ...post,
+                                content: '<p>Conteúdo indisponível.</p>'
+                            };
                         }
                     })
                 );
 
                 renderPosts(postsWithContent);
+
             } catch (error) {
                 console.error('Erro ao carregar posts:', error);
                 container.innerHTML = `
                     <div class="no-posts">
                         <i class="fa-solid fa-triangle-exclamation"></i>
                         <p>Erro ao carregar os artigos. Tente novamente mais tarde.</p>
+                        <p style="font-size: 13px; margin-top: 8px; color: #666;">Verifique se o arquivo _posts/index.json existe.</p>
                     </div>
                 `;
             }
@@ -466,6 +444,7 @@
         data-cf-beacon='{"rayId":"9d58f6cffc1b3ea7","version":"2025.9.1","r":1,"token":"52bb7009bda84e0b8e943373c7eeeed6","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}'
         crossorigin="anonymous">
     </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"52bb7009bda84e0b8e943373c7eeeed6","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 
 </html>
