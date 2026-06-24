@@ -17,208 +17,194 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     <!-- Marked.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.0.0/marked.min.js"></script>
-    <!-- Prism.js para syntax highlighting -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
 
     <style>
-        .post-header {
+        /* ===== ESTILOS ESPECÍFICOS DO BLOG ===== */
+        .blog-header {
+            text-align: center;
             padding: 40px 0 30px;
-            border-bottom: 1px solid rgba(140, 82, 255, 0.15);
-            margin-bottom: 40px;
         }
 
-        .post-header .post-tags {
-            margin: 16px 0;
-        }
-
-        .post-header .post-tags .tag {
-            font-size: 12px;
-            padding: 4px 12px;
-        }
-
-        .post-header .post-meta {
-            color: #b0b0c0;
+        .blog-header .section-subtitle {
             font-size: 14px;
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-
-        .post-header .post-meta i {
-            color: #8C52FF;
-            margin-right: 6px;
-        }
-
-        .post-content {
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .post-content h1,
-        .post-content h2,
-        .post-content h3 {
-            color: #ffffff;
-            margin: 32px 0 16px;
-        }
-
-        .post-content h1 {
-            font-size: 32px;
-        }
-        .post-content h2 {
-            font-size: 26px;
-        }
-        .post-content h3 {
-            font-size: 20px;
-        }
-
-        .post-content p {
-            color: #c8c8d0;
-            font-size: 17px;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .post-content ul,
-        .post-content ol {
-            color: #c8c8d0;
-            margin: 16px 0 20px 24px;
-        }
-
-        .post-content li {
-            margin-bottom: 8px;
-        }
-
-        .post-content pre {
-            background: #1a1a24;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 24px 0;
-            overflow-x: auto;
-            border: 1px solid rgba(140, 82, 255, 0.15);
-        }
-
-        .post-content code {
-            font-family: 'Fira Code', monospace;
-            font-size: 14px;
-        }
-
-        .post-content blockquote {
-            border-left: 4px solid #8C52FF;
-            padding: 16px 24px;
-            background: rgba(140, 82, 255, 0.05);
-            border-radius: 0 12px 12px 0;
-            margin: 24px 0;
-            color: #b0b0c0;
-        }
-
-        .post-content img {
-            max-width: 100%;
-            border-radius: 12px;
-            margin: 24px 0;
-            border: 1px solid rgba(140, 82, 255, 0.1);
-        }
-
-        .post-content .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: #8C52FF;
-            text-decoration: none;
             font-weight: 600;
-            margin-top: 40px;
-            padding: 12px 24px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #8C52FF;
+            margin-bottom: 10px;
+        }
+
+        .blog-header h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 16px;
+        }
+
+        .blog-header h1 span {
+            color: #8C52FF;
+        }
+
+        .blog-header p {
+            font-size: 18px;
+            color: #b0b0c0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .blog-card {
+            background: #1e1e2a;
+            border-radius: 20px;
+            padding: 28px;
             border: 1px solid rgba(140, 82, 255, 0.2);
-            border-radius: 30px;
-            transition: all 0.3s;
-        }
-
-        .post-content .back-link:hover {
-            background: rgba(140, 82, 255, 0.1);
-            transform: translateX(-4px);
-        }
-
-        .post-loading {
-            text-align: center;
-            padding: 80px 0;
-            color: #b0b0c0;
-        }
-
-        .post-loading i {
-            font-size: 48px;
-            color: #8C52FF;
-            margin-bottom: 16px;
-        }
-
-        .post-error {
-            text-align: center;
-            padding: 80px 0;
-            color: #b0b0c0;
-        }
-
-        .post-error i {
-            font-size: 48px;
-            color: #ff6b6b;
-            margin-bottom: 16px;
-        }
-
-        .post-error a {
-            color: #8C52FF;
+            transition: all 0.3s ease;
             text-decoration: none;
+            color: inherit;
+            display: block;
+            height: 100%;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -12px rgba(140, 82, 255, 0.3);
+            border-color: #8C52FF;
+        }
+
+        .blog-card .post-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .blog-card .post-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(140, 82, 255, 0.15);
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #8C52FF;
+            letter-spacing: 0.3px;
+        }
+
+        .blog-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .blog-card .post-excerpt {
+            color: #b0b0c0;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .blog-card .post-meta {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 13px;
+            color: #5E667B;
+        }
+
+        .blog-card .post-meta i {
+            color: #8C52FF;
+            margin-right: 4px;
+            width: 16px;
+        }
+
+        .loading-spinner {
+            text-align: center;
+            padding: 60px 0;
+            color: #b0b0c0;
+        }
+
+        .loading-spinner i {
+            font-size: 48px;
+            color: #8C52FF;
+            margin-bottom: 16px;
+        }
+
+        .no-posts {
+            text-align: center;
+            padding: 60px 0;
+            color: #b0b0c0;
+        }
+
+        .no-posts i {
+            font-size: 48px;
+            color: #8C52FF;
+            margin-bottom: 16px;
         }
 
         /* Tema claro */
-        body.light-theme .post-content h1,
-        body.light-theme .post-content h2,
-        body.light-theme .post-content h3 {
+        body.light-theme .blog-header h1 {
             color: #0C184B;
         }
 
-        body.light-theme .post-content p,
-        body.light-theme .post-content ul,
-        body.light-theme .post-content ol {
+        body.light-theme .blog-header p {
             color: #5E667B;
         }
 
-        body.light-theme .post-content pre {
-            background: #f0f0f5;
+        body.light-theme .blog-card {
+            background: #FFFFFF;
+            border: 1px solid rgba(140, 82, 255, 0.15);
         }
 
-        body.light-theme .post-content blockquote {
-            background: rgba(140, 82, 255, 0.03);
+        body.light-theme .blog-card:hover {
+            border-color: #8C52FF;
         }
 
-        body.light-theme .post-header .post-meta {
+        body.light-theme .blog-card h3 {
+            color: #0C184B;
+        }
+
+        body.light-theme .blog-card .post-excerpt {
             color: #5E667B;
+        }
+
+        body.light-theme .blog-card .post-meta {
+            color: #8a8fa0;
         }
 
         @media (max-width: 768px) {
-            .post-content {
-                padding: 0 16px;
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
-            .post-content h1 {
-                font-size: 26px;
+
+            .blog-header h1 {
+                font-size: 28px;
             }
-            .post-content h2 {
-                font-size: 22px;
+
+            .blog-header p {
+                font-size: 16px;
             }
-            .post-content p {
-                font-size: 15px;
+
+            .blog-card {
+                padding: 20px;
             }
-            .post-header .post-meta {
-                gap: 12px;
-                font-size: 13px;
+
+            .blog-card h3 {
+                font-size: 18px;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Navbar -->
+    <!-- ===== NAVBAR ===== -->
     <nav class="navbar">
         <div class="navbar-container">
             <div class="navbar-logo">
@@ -230,7 +216,7 @@
                 <li><a href="/#home">Início</a></li>
                 <li><a href="/#conteudo">Conteúdo</a></li>
                 <li><a href="/#sobre">Sobre</a></li>
-                <li><a href="/blog/">Blog</a></li>
+                <li><a href="/blog/" class="active">Blog</a></li>
                 <li><a href="/#comunidade">Comunidade</a></li>
             </ul>
 
@@ -253,20 +239,29 @@
         </div>
     </nav>
 
+    <!-- ===== CONTEÚDO PRINCIPAL ===== -->
     <main class="main-content">
-        <section id="post">
+        <section id="blog">
             <div class="container">
-                <div id="post-container">
-                    <div class="post-loading">
+
+                <div class="blog-header animate__animated animate__fadeInUp">
+                    <div class="section-subtitle">BLOG</div>
+                    <h1>Artigos e <span>Insights</span></h1>
+                    <p>Análises profundas, tutoriais completos e reflexões sobre o mundo da segurança digital.</p>
+                </div>
+
+                <div id="posts-container">
+                    <div class="loading-spinner">
                         <i class="fa-solid fa-spinner fa-spin"></i>
-                        <p>Carregando artigo...</p>
+                        <p>Carregando artigos...</p>
                     </div>
                 </div>
+
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
+    <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -303,6 +298,7 @@
         </div>
     </footer>
 
+    <!-- ===== SCRIPTS ===== -->
     <script>
         // ===== FUNÇÃO PARA ALTERNAR TEMA =====
         function toggleTheme() {
@@ -325,105 +321,102 @@
         if (savedTheme === 'light') {
             document.body.classList.add('light-theme');
             document.querySelector('.theme-toggle i').className = 'fa-solid fa-moon';
-        } else {
-            document.body.classList.remove('light-theme');
-            document.querySelector('.theme-toggle i').className = 'fa-solid fa-sun';
         }
 
         // ============================================================
-        // ===== POST 100% DINÂMICO - LENDO DO _post/index.json =====
+        // ===== BLOG 100% DINÂMICO - LENDO DO _post/index.json =====
         // ============================================================
 
-        async function loadPost() {
-            const container = document.getElementById('post-container');
+        async function loadPosts() {
+            const container = document.getElementById('posts-container');
             if (!container) return;
 
-            const params = new URLSearchParams(window.location.search);
-            const slug = params.get('slug');
+            try {
+                // CAMINHO RELATIVO: _post/index.json (mesma pasta)
+                const response = await fetch('_post/index.json');
+                if (!response.ok) throw new Error('Arquivo index.json não encontrado');
+                const posts = await response.json();
 
-            if (!slug) {
+                // Para cada post, carrega o conteúdo do arquivo .md
+                const postsWithContent = await Promise.all(
+                    posts.map(async (post) => {
+                        try {
+                            const mdResponse = await fetch(`_post/${post.slug}.md`);
+                            if (!mdResponse.ok) throw new Error('Arquivo .md não encontrado');
+                            const markdown = await mdResponse.text();
+                            const htmlContent = marked.parse(markdown);
+
+                            return {
+                                ...post,
+                                content: htmlContent
+                            };
+                        } catch (error) {
+                            console.error(`Erro ao carregar ${post.slug}:`, error);
+                            return {
+                                ...post,
+                                content: '<p>Conteúdo indisponível.</p>'
+                            };
+                        }
+                    })
+                );
+
+                renderPosts(postsWithContent);
+
+            } catch (error) {
+                console.error('Erro ao carregar posts:', error);
                 container.innerHTML = `
-                    <div class="post-error">
-                        <i class="fa-solid fa-circle-exclamation"></i>
-                        <p>Nenhum artigo especificado.</p>
-                        <a href="/blog/"><i class="fa-solid fa-arrow-left"></i> Voltar para o blog</a>
+                    <div class="no-posts">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <p>Erro ao carregar os artigos. Tente novamente mais tarde.</p>
+                        <p style="font-size: 13px; margin-top: 8px; color: #666;">Verifique se o arquivo _post/index.json existe.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function renderPosts(postsData) {
+            const container = document.getElementById('posts-container');
+            if (!container) return;
+
+            if (!postsData || postsData.length === 0) {
+                container.innerHTML = `
+                    <div class="no-posts">
+                        <i class="fa-solid fa-book-open"></i>
+                        <p>Nenhum artigo publicado ainda. Volte em breve!</p>
                     </div>
                 `;
                 return;
             }
 
-            try {
-                // 1. Carrega o index.json
-                const indexResponse = await fetch('_post/index.json');
-                if (!indexResponse.ok) throw new Error('Arquivo index.json não encontrado');
-                const posts = await indexResponse.json();
-
-                // 2. Encontra o post pelo slug
-                const postMeta = posts.find(p => p.slug === slug);
-                if (!postMeta) {
-                    throw new Error(`Post com slug "${slug}" não encontrado`);
-                }
-
-                // 3. Carrega o arquivo .md
-                const mdResponse = await fetch(`_post/${slug}.md`);
-                if (!mdResponse.ok) throw new Error('Arquivo .md não encontrado');
-                const markdown = await mdResponse.text();
-
-                // 4. Converte Markdown para HTML
-                const htmlContent = marked.parse(markdown);
-
-                // 5. Formata a data
-                const dateObj = new Date(postMeta.date);
+            const postsHTML = postsData.map(post => {
+                const dateObj = new Date(post.date);
                 const formattedDate = dateObj.toLocaleDateString('pt-BR', {
                     day: '2-digit',
                     month: 'long',
                     year: 'numeric'
                 });
 
-                const tagsHTML = (postMeta.tags || []).map(tag =>
-                    `<span class="tag">${tag}</span>`
+                const tagsHTML = post.tags.map(tag =>
+                    `<span class="post-tag">${tag}</span>`
                 ).join('');
 
-                // 6. Renderiza
-                container.innerHTML = `
-                    <article class="post-content animate__animated animate__fadeInUp">
-                        <div class="post-header">
-                            <h1 style="font-size: 38px; color: #ffffff; margin-bottom: 12px;">${postMeta.title}</h1>
-                            <div class="post-tags">${tagsHTML}</div>
-                            <div class="post-meta">
-                                <span><i class="fa-regular fa-calendar"></i> ${formattedDate}</span>
-                                <span><i class="fa-regular fa-clock"></i> 5 min de leitura</span>
-                            </div>
+                return `
+                    <a href="post.html?slug=${post.slug}" class="blog-card animate__animated animate__fadeInUp">
+                        <div class="post-tags">${tagsHTML}</div>
+                        <h3>${post.title}</h3>
+                        <p class="post-excerpt">${post.excerpt}</p>
+                        <div class="post-meta">
+                            <span><i class="fa-regular fa-calendar"></i> ${formattedDate}</span>
+                            <span><i class="fa-regular fa-clock"></i> 5 min de leitura</span>
                         </div>
-                        <div class="post-body">
-                            ${htmlContent}
-                        </div>
-                        <a href="/blog/" class="back-link">
-                            <i class="fa-solid fa-arrow-left"></i> Voltar para o blog
-                        </a>
-                    </article>
+                    </a>
                 `;
+            }).join('');
 
-                if (typeof Prism !== 'undefined') {
-                    Prism.highlightAll();
-                }
-
-            } catch (error) {
-                console.error('Erro ao carregar o post:', error);
-                container.innerHTML = `
-                    <div class="post-error">
-                        <i class="fa-solid fa-triangle-exclamation"></i>
-                        <p>Erro ao carregar o artigo. Tente novamente mais tarde.</p>
-                        <p style="font-size: 13px; margin-top: 8px; color: #666;">Slug: ${slug}</p>
-                        <a href="/blog/" style="display: inline-block; margin-top: 20px; color: #8C52FF; text-decoration: none;">
-                            <i class="fa-solid fa-arrow-left"></i> Voltar para o blog
-                        </a>
-                    </div>
-                `;
-            }
+            container.innerHTML = `<div class="blog-grid">${postsHTML}</div>`;
         }
 
-        document.addEventListener('DOMContentLoaded', loadPost);
+        document.addEventListener('DOMContentLoaded', loadPosts);
     </script>
 </body>
 
