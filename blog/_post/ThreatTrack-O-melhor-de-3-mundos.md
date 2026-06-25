@@ -45,14 +45,7 @@ Observe atentamente o **help** da ferramenta, ela fornece um guia bem detalhado 
 <div style="display: flex; align-items: center; gap: 16px; padding: 20px; background: rgba(140, 82, 255, 0.05); border-radius: 16px; border: 1px solid rgba(140, 82, 255, 0.1); margin-top: 40px;">
     <img src="https://avatars.githubusercontent.com/u/25537761?v=4" alt="Autor" style="width: 60px; height: 60px; border-radius: 50%; border: 2px solid #8C52FF;">
     <div>
-        <p style="font-weight: 600; margin: 0; color: #ffffff;">Escrito por <a href="https://github.com/Ls4ss" target="_blank" style="color: #8C52FF; text-decoration: none;">Seu Nome</a></p>
-        <p style="font-size: 14px; color: #b0b0c0; margin: 4px 0 0 0;">Especialista em Segurança Digital | Criador da DetecTI</p>
+        <p style="font-weight: 600; margin: 0; color: #ffffff;">Escrito por <a href="https://github.com/Ls4ss" target="_blank" style="color: #8C52FF; text-decoration: none;">Lucas (Ls4ss)</a></p>
+        <p style="font-size: 14px; color: #b0b0c0; margin: 4px 0 0 0;">Especialista em Segurança Ofensiva | Criador da DetecTI</p>
     </div>
 </div>
----
-
-**👤 Escrito por [Lucas (Ls4ss)](https://github.com/Ls4ss)**
-
-<img src="https://avatars.githubusercontent.com/u/25537761?v=4" width="60" style="border-radius: 50%; border: 2px solid #8C52FF;">
-
-*Especialista em Segurança Digital | Fundador da DetecTI*
