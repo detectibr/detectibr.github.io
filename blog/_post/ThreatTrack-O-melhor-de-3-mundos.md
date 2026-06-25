@@ -49,3 +49,4 @@ Observe atentamente o **help** da ferramenta, ela fornece um guia bem detalhado 
         <p style="font-size: 14px; color: #b0b0c0; margin: 4px 0 0 0;">Especialista em Segurança Ofensiva | Criador da DetecTI</p>
     </div>
 </div>
+
