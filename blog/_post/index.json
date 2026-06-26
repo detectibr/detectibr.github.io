@@ -12,5 +12,12 @@
         "date": "2026-06-25",
         "tags": ["Ls4ss", "OSINT/Recon"],
         "excerpt": "ThreatTrack é um projeto em Python que tem como objetivo ser uma ferramenta de consulta e análise de segurança em IPs públicos..."
+    },
+    {
+        "slug": "TOTVS-FLuig-Platform-CVE-2020-29134",
+        "title": "CVE-2020-29134 — Directory Traversal na Plataforma TOTVS Fluig",
+        "date": "2021-03-04",
+        "tags": ["Ls4ss", "CVE"],
+        "excerpt": "Durante uma análise de segurança da plataforma TOTVS Fluig, foi identificada uma vulnerabilidade de Directory Traversal..."
     }
 ]
