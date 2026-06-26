@@ -52,6 +52,133 @@
             margin: 0 auto;
         }
 
+        /* ===== BARRA DE BUSCA E FILTROS ===== */
+        .blog-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 30px 0 20px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 20px 12px 46px;
+            background: #1e1e2a;
+            border: 1px solid rgba(140, 82, 255, 0.2);
+            border-radius: 30px;
+            color: #e0e0e0;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: #8C52FF;
+            box-shadow: 0 0 0 3px rgba(140, 82, 255, 0.15);
+        }
+
+        .search-box input::placeholder {
+            color: #5E667B;
+        }
+
+        .search-box .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #5E667B;
+            font-size: 16px;
+        }
+
+        .search-box .clear-btn {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #5E667B;
+            cursor: pointer;
+            font-size: 16px;
+            display: none;
+            padding: 4px;
+        }
+
+        .search-box .clear-btn.visible {
+            display: block;
+        }
+
+        .search-box .clear-btn:hover {
+            color: #8C52FF;
+        }
+
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .filter-tags .filter-label {
+            font-size: 13px;
+            color: #b0b0c0;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+
+        .filter-tag {
+            padding: 6px 16px;
+            background: rgba(140, 82, 255, 0.08);
+            border: 1px solid rgba(140, 82, 255, 0.15);
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #b0b0c0;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .filter-tag:hover {
+            background: rgba(140, 82, 255, 0.15);
+            color: #8C52FF;
+            border-color: #8C52FF;
+            transform: translateY(-2px);
+        }
+
+        .filter-tag.active {
+            background: #8C52FF;
+            color: #FFFFFF;
+            border-color: #8C52FF;
+        }
+
+        .filter-tag .tag-count {
+            font-size: 10px;
+            opacity: 0.6;
+            margin-left: 4px;
+        }
+
+        .results-info {
+            font-size: 14px;
+            color: #5E667B;
+            margin: 10px 0 0;
+            text-align: center;
+        }
+
+        .results-info strong {
+            color: #8C52FF;
+        }
+
+        /* ===== GRID DE POSTS ===== */
         .blog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -124,6 +251,7 @@
             width: 16px;
         }
 
+        /* ===== LOADING E EMPTY STATES ===== */
         .loading-spinner {
             text-align: center;
             padding: 60px 0;
@@ -148,7 +276,25 @@
             margin-bottom: 16px;
         }
 
-        /* Tema claro */
+        .no-posts .clear-filters-btn {
+            margin-top: 16px;
+            padding: 10px 24px;
+            background: rgba(140, 82, 255, 0.15);
+            border: 1px solid rgba(140, 82, 255, 0.3);
+            border-radius: 30px;
+            color: #8C52FF;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .no-posts .clear-filters-btn:hover {
+            background: #8C52FF;
+            color: #FFFFFF;
+        }
+
+        /* ===== TEMA CLARO ===== */
         body.light-theme .blog-header h1 {
             color: #0C184B;
         }
@@ -178,6 +324,37 @@
             color: #8a8fa0;
         }
 
+        body.light-theme .search-box input {
+            background: #FFFFFF;
+            border: 1px solid rgba(140, 82, 255, 0.15);
+            color: #0C184B;
+        }
+
+        body.light-theme .search-box input::placeholder {
+            color: #8a8fa0;
+        }
+
+        body.light-theme .filter-tag {
+            background: rgba(140, 82, 255, 0.05);
+            border: 1px solid rgba(140, 82, 255, 0.15);
+            color: #5E667B;
+        }
+
+        body.light-theme .filter-tag:hover {
+            background: rgba(140, 82, 255, 0.1);
+            color: #8C52FF;
+        }
+
+        body.light-theme .filter-tag.active {
+            background: #8C52FF;
+            color: #FFFFFF;
+        }
+
+        body.light-theme .results-info {
+            color: #8a8fa0;
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
         @media (max-width: 768px) {
             .blog-grid {
                 grid-template-columns: 1fr;
@@ -198,6 +375,19 @@
 
             .blog-card h3 {
                 font-size: 18px;
+            }
+
+            .blog-controls {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .search-box {
+                min-width: 100%;
+            }
+
+            .filter-tags {
+                justify-content: center;
             }
         }
     </style>
@@ -250,6 +440,29 @@
                     <p>Análises profundas, tutoriais completos e reflexões sobre o mundo da segurança digital.</p>
                 </div>
 
+                <!-- ===== CONTROLES DO BLOG ===== -->
+                <div class="blog-controls animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
+                    <!-- Busca -->
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" id="searchInput" placeholder="Buscar por título, tag ou conteúdo..." oninput="filterPosts()">
+                        <button class="clear-btn" id="clearBtn" onclick="clearSearch()">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+
+                    <!-- Filtros por Tag -->
+                    <div class="filter-tags" id="filterTags">
+                        <span class="filter-label"><i class="fa-solid fa-tags"></i> Tags:</span>
+                        <span class="filter-tag active" data-tag="all" onclick="filterByTag('all')">Todos</span>
+                        <!-- Tags serão inseridas via JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Resultados info -->
+                <div class="results-info" id="resultsInfo"></div>
+
+                <!-- Container dos posts -->
                 <div id="posts-container">
                     <div class="loading-spinner">
                         <i class="fa-solid fa-spinner fa-spin"></i>
@@ -324,43 +537,49 @@
         }
 
         // ============================================================
-        // ===== BLOG 100% DINÂMICO - LENDO DO _post/index.json =====
+        // ===== VARIÁVEIS GLOBAIS =====
         // ============================================================
+        let allPosts = [];
+        let filteredPosts = [];
+        let currentTag = 'all';
+        let currentSearch = '';
 
+        // ============================================================
+        // ===== CARREGAR POSTS =====
+        // ============================================================
         async function loadPosts() {
             const container = document.getElementById('posts-container');
             if (!container) return;
 
             try {
-                // CAMINHO RELATIVO: _post/index.json (mesma pasta)
                 const response = await fetch('_post/index.json');
                 if (!response.ok) throw new Error('Arquivo index.json não encontrado');
-                const posts = await response.json();
+                allPosts = await response.json();
 
-                // Para cada post, carrega o conteúdo do arquivo .md
+                // Carrega o conteúdo de cada post
                 const postsWithContent = await Promise.all(
-                    posts.map(async (post) => {
+                    allPosts.map(async (post) => {
                         try {
                             const mdResponse = await fetch(`_post/${post.slug}.md`);
                             if (!mdResponse.ok) throw new Error('Arquivo .md não encontrado');
                             const markdown = await mdResponse.text();
                             const htmlContent = marked.parse(markdown);
-
-                            return {
-                                ...post,
-                                content: htmlContent
-                            };
+                            return { ...post, content: htmlContent };
                         } catch (error) {
                             console.error(`Erro ao carregar ${post.slug}:`, error);
-                            return {
-                                ...post,
-                                content: '<p>Conteúdo indisponível.</p>'
-                            };
+                            return { ...post, content: '<p>Conteúdo indisponível.</p>' };
                         }
                     })
                 );
 
-                renderPosts(postsWithContent);
+                allPosts = postsWithContent;
+                filteredPosts = [...allPosts];
+
+                // Gera as tags
+                generateTags();
+
+                // Renderiza
+                renderPosts(filteredPosts);
 
             } catch (error) {
                 console.error('Erro ao carregar posts:', error);
@@ -374,6 +593,122 @@
             }
         }
 
+        // ============================================================
+        // ===== GERAR TAGS =====
+        // ============================================================
+        function generateTags() {
+            const tagContainer = document.getElementById('filterTags');
+            const tagCounts = {};
+
+            // Conta ocorrências de cada tag
+            allPosts.forEach(post => {
+                if (post.tags) {
+                    post.tags.forEach(tag => {
+                        tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+                    });
+                }
+            });
+
+            // Ordena tags por frequência
+            const sortedTags = Object.keys(tagCounts).sort((a, b) => tagCounts[b] - tagCounts[a]);
+
+            // Remove tags existentes (mantém "Todos")
+            const existingTags = tagContainer.querySelectorAll('.filter-tag:not([data-tag="all"])');
+            existingTags.forEach(el => el.remove());
+
+            // Adiciona novas tags
+            sortedTags.forEach(tag => {
+                const tagEl = document.createElement('span');
+                tagEl.className = 'filter-tag';
+                tagEl.dataset.tag = tag;
+                tagEl.innerHTML = `${tag} <span class="tag-count">(${tagCounts[tag]})</span>`;
+                tagEl.onclick = () => filterByTag(tag);
+                tagContainer.appendChild(tagEl);
+            });
+        }
+
+        // ============================================================
+        // ===== FUNÇÕES DE FILTRO =====
+        // ============================================================
+        function filterByTag(tag) {
+            currentTag = tag;
+
+            // Atualiza UI dos botões de tag
+            document.querySelectorAll('.filter-tag').forEach(el => {
+                el.classList.toggle('active', el.dataset.tag === tag);
+            });
+
+            applyFilters();
+        }
+
+        function filterPosts() {
+            const input = document.getElementById('searchInput');
+            currentSearch = input.value.trim().toLowerCase();
+
+            // Mostra/oculta botão de limpar
+            const clearBtn = document.getElementById('clearBtn');
+            if (currentSearch.length > 0) {
+                clearBtn.classList.add('visible');
+            } else {
+                clearBtn.classList.remove('visible');
+            }
+
+            applyFilters();
+        }
+
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('clearBtn').classList.remove('visible');
+            currentSearch = '';
+            applyFilters();
+            document.getElementById('searchInput').focus();
+        }
+
+        function applyFilters() {
+            let result = [...allPosts];
+
+            // Filtro por tag
+            if (currentTag !== 'all') {
+                result = result.filter(post => post.tags && post.tags.includes(currentTag));
+            }
+
+            // Filtro por busca
+            if (currentSearch.length > 0) {
+                result = result.filter(post => {
+                    const searchable = [
+                        post.title,
+                        post.excerpt,
+                        ...(post.tags || []),
+                        post.slug
+                    ].join(' ').toLowerCase();
+                    return searchable.includes(currentSearch);
+                });
+            }
+
+            filteredPosts = result;
+            renderPosts(filteredPosts);
+            updateResultsInfo(filteredPosts.length);
+        }
+
+        function updateResultsInfo(count) {
+            const info = document.getElementById('resultsInfo');
+            const total = allPosts.length;
+
+            if (count === 0) {
+                info.innerHTML = 'Nenhum artigo encontrado. <strong>Tente outros termos ou filtros.</strong>';
+            } else if (count === total && currentTag === 'all' && currentSearch.length === 0) {
+                info.innerHTML = `Mostrando <strong>${count}</strong> artigos publicados`;
+            } else {
+                let parts = [];
+                if (currentTag !== 'all') parts.push(`tag <strong>${currentTag}</strong>`);
+                if (currentSearch.length > 0) parts.push(`busca <strong>"${currentSearch}"</strong>`);
+                info.innerHTML = `Mostrando <strong>${count}</strong> artigos com ${parts.join(' e ')}`;
+            }
+        }
+
+        // ============================================================
+        // ===== RENDERIZAR POSTS =====
+        // ============================================================
         function renderPosts(postsData) {
             const container = document.getElementById('posts-container');
             if (!container) return;
@@ -381,8 +716,11 @@
             if (!postsData || postsData.length === 0) {
                 container.innerHTML = `
                     <div class="no-posts">
-                        <i class="fa-solid fa-book-open"></i>
-                        <p>Nenhum artigo publicado ainda. Volte em breve!</p>
+                        <i class="fa-solid fa-circle-xmark"></i>
+                        <p>Nenhum artigo encontrado com os filtros atuais.</p>
+                        <button class="clear-filters-btn" onclick="resetFilters()">
+                            <i class="fa-solid fa-rotate-left"></i> Limpar filtros
+                        </button>
                     </div>
                 `;
                 return;
@@ -396,7 +734,7 @@
                     year: 'numeric'
                 });
 
-                const tagsHTML = post.tags.map(tag =>
+                const tagsHTML = (post.tags || []).map(tag =>
                     `<span class="post-tag">${tag}</span>`
                 ).join('');
 
@@ -416,6 +754,22 @@
             container.innerHTML = `<div class="blog-grid">${postsHTML}</div>`;
         }
 
+        function resetFilters() {
+            currentTag = 'all';
+            currentSearch = '';
+            document.getElementById('searchInput').value = '';
+            document.getElementById('clearBtn').classList.remove('visible');
+
+            document.querySelectorAll('.filter-tag').forEach(el => {
+                el.classList.toggle('active', el.dataset.tag === 'all');
+            });
+
+            applyFilters();
+        }
+
+        // ============================================================
+        // ===== INICIALIZAR =====
+        // ============================================================
         document.addEventListener('DOMContentLoaded', loadPosts);
     </script>
 </body>
