@@ -3,21 +3,21 @@
         "slug": "ThreatTrack-O-melhor-de-3-mundos",
         "title": "ThreatTrack - O melhor de 3 mundos (Shodan + ExploitDB + NVD)",
         "date": "2026-06-25",
-        "tags": ["Ls4ss", "OSINT/Recon"],
+        "tags": ["OSINT/Recon"],
         "excerpt": "ThreatTrack é um projeto em Python que tem como objetivo ser uma ferramenta de consulta e análise de segurança em IPs públicos..."
     },
     {
         "slug": "Pesquisa-Academica",
         "title": "Fontes Abertas de Inteligência (OSINT): Estratégias para Garantir a Integridade e Admissibilidade em Investigações Forenses Digitais",
         "date": "2025-01-04",
-        "tags": ["Ls4ss", "Pesquisa"],
+        "tags": ["OSINT/Recon"],
         "excerpt": "Esta pesquisa acadêmica teve como objetivo avaliar a aplicabilidade de informações provenientes de fontes abertas (OSINT) em processos judiciais..."
     },
     {
         "slug": "TOTVS-FLuig-Platform-CVE-2020-29134",
         "title": "CVE-2020-29134 — Directory Traversal na Plataforma TOTVS Fluig",
         "date": "2021-03-04",
-        "tags": ["Ls4ss", "CVE"],
+        "tags": ["Vulnerabilidade"],
         "excerpt": "Durante uma análise de segurança da plataforma TOTVS Fluig, foi identificada uma vulnerabilidade de Directory Traversal..."
     }
 ]
