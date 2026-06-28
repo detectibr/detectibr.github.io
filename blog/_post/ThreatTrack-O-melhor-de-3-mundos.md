@@ -21,8 +21,8 @@ A ferramenta automatiza o trabalho braçal de um operador de Red Team durante a 
 * **Triagem de Vulnerabilidades:** Com os dados do Shodan em mãos, o ThreatTrack filtra as tecnologias e consulta quais CVEs afetam aquelas versões específicas.
 * **Enriquecimento de Exploração:** Em vez de apenas listar as CVEs, o script dá o próximo passo:
 * Consulta a base do NVD para extrair o impacto e a pontuação CVSS.
-- Usa o utilitário cve_searchsploit para vasculhar a base de dados do ExploitDB.
-- Faz o scraping no GitHub em busca de repositórios que contenham exploits para aquelas CVEs exatas.
+ - Usa o utilitário cve_searchsploit para vasculhar a base de dados do ExploitDB.
+ - Faz o scraping no GitHub em busca de repositórios que contenham exploits para aquelas CVEs exatas.
 
 ![alt text](https://raw.githubusercontent.com/Ls4ss/blog/main/assets/images/posts/ThreatTrack_Flow.gif)
 
