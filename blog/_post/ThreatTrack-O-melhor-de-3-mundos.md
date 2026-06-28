@@ -1,4 +1,4 @@
-#### ThreatTrack
+#### O que é o ThreatTrack?
      
 ThreatTrack é um projeto em Python que tem como objetivo ser uma ferramenta de consulta e análise de segurança em IPs públicos e domínios, utilizando a API do Shodan (shodan.io) como base.
 O script é projetado para coletar informações detalhadas sobre IPs e domínios, destacando potenciais vulnerabilidades relacionadas às versões de tecnologias mapeadas pelo Shodan.
@@ -6,13 +6,23 @@ Além disso, ele se integra aos bancos de dados do NVD (National Vulnerability D
  
 #### Características
      
-+ Coleta de informações sobre IPs e Domínios utilizando a API Shodan.io.
-+ Identificação de CVE's com base nas versões de tecnologias mapeadas pelo Shodan.
-+ Consulta de CVE's nas fontes de dados: NVD, ExploitDB e GitHub.
+A essência do projeto é descrita como "O melhor de 3 mundos", pois isso representa a sua capacidade de agregar e cruzar dados de diferentes fontes vitais de segurança cibernética em uma única execução:
 
-#### Fluxo de consulta de dados da ferramenta
+* **Shodan.io:** O motor de busca inicial que varre portas abertas, serviços expostos e coleta as versões exatas das tecnologias rodando no alvo.
+* **NVD (National Vulnerability Database):** Utilizado para mapear as versões descobertas pelo Shodan contra vulnerabilidades conhecidas (CVEs).
+* **ExploitDB & GitHub:** Fontes consultadas ativamente pela ferramenta para descobrir se as vulnerabilidades mapeadas possuem exploits públicos ou Provas de Conceito (PoCs) já desenvolvidas.
 
-Utlizando os parâmetros **host** ou **domain** podemos fornecer para a ferramenta um endereço IP ou um domínio para que a busca inicie no Shodan, também podemos utilizar a opção **file** para fornecer uma lista de IPs ou domínios.
+#### Fluxo de Execução e Arquitetura
+
+A ferramenta automatiza o trabalho braçal de um operador de Red Team durante a enumeração inicial. O fluxo de dados segue esta lógica:
+
+* **Entrada do Alvo:** O script recebe um IP, um domínio ou uma lista (via arquivo txt).
+* **Enumeração Passiva:** Uma chamada à API do Shodan é feita. A resposta traz um panorama de infraestrutura, incluindo banners e, mais importante, as versões de softwares web, bancos de dados ou serviços SSH/RDP expostos.
+* **Triagem de Vulnerabilidades:** Com os dados do Shodan em mãos, o ThreatTrack filtra as tecnologias e consulta quais CVEs afetam aquelas versões específicas.
+* **Enriquecimento de Exploração:** Em vez de apenas listar as CVEs, o script dá o próximo passo:
+* Consulta a base do NVD para extrair o impacto e a pontuação CVSS.
+- Usa o utilitário cve_searchsploit para vasculhar a base de dados do ExploitDB.
+- Faz o scraping no GitHub em busca de repositórios que contenham exploits para aquelas CVEs exatas.
 
 ![alt text](https://raw.githubusercontent.com/Ls4ss/blog/main/assets/images/posts/ThreatTrack_Flow.gif)
 
