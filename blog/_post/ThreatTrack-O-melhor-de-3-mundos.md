@@ -17,12 +17,12 @@ A essência do projeto é descrita como "O melhor de 3 mundos", pois isso repres
 A ferramenta automatiza o trabalho braçal de um operador de Red Team durante a enumeração inicial. O fluxo de dados segue esta lógica:
 
 * **Entrada do Alvo:** O script recebe um IP, um domínio ou uma lista (via arquivo txt).
-* **Enumeração Passiva:** Uma chamada à API do Shodan é feita. A resposta traz um panorama de infraestrutura, incluindo banners com versões de softwares expostos, e mais importante, a relação de CVE's aos serviços expostos.
-* **Triagem de Vulnerabilidades:** Com os dados do Shodan em mãos, o ThreatTrack relaciona as tecnologias e as CVEs que afetam os serviços identificados.
+* **Enumeração Passiva:** Uma chamada à API do Shodan é feita. A resposta traz um panorama de infraestrutura, incluindo banners com versões de softwares expostos, e mais importante, a relação de CVE's aos serviços identificados.
+* **Triagem de Vulnerabilidades:** Com os dados do Shodan em mãos, o ThreatTrack relaciona as tecnologias e as CVEs que afetam os serviços.
 * **Enriquecimento de Exploração:** Em vez de apenas listar as CVEs, o script dá o próximo passo:
      - Consulta a base do NVD para extrair o impacto e a pontuação CVSS.
           - Usa o utilitário cve_searchsploit para vasculhar a base de dados do ExploitDB.
-          - Faz o scraping no GitHub em busca de repositórios que contenham exploits para aquelas CVEs exatas.
+          - Faz o scraping no GitHub em busca de repositórios que contenham *Prova de Conceito* (PoC) para as exatas CVEs relacionadas.
 
 ![alt text](https://raw.githubusercontent.com/Ls4ss/blog/main/assets/images/posts/ThreatTrack_Flow.gif)
 
