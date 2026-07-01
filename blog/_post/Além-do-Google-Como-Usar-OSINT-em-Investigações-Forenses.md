@@ -7,6 +7,7 @@ Mas aqui está o grande divisor de águas entre um curioso da internet e um prof
 Se você acha que fazer OSINT é apenas digitar um nome no Google, este artigo vai expandir seus horizontes. Vamos explorar as principais técnicas de coleta e, mais importante, as estratégias para garantir a **integridade** e **admissibilidade** dessas evidências.
 
 --
+
 ## O que é Inteligência (de verdade) na Era Digital?
 
 Para a Ciência da Informação, existe uma diferença crucial entre **dado bruto** e **inteligência**. Pense em uma pirâmide informacional: na base, temos dados desconexos; no topo, o conhecimento reflexivo.
@@ -22,6 +23,7 @@ No contexto investigativo, a **Doutrina Nacional de Inteligência de Segurança 
 3. **OSINT (Open Source Intelligence):** Produção de conhecimento baseada em dados públicos e de livre acesso.
     
 --
+
 ## O Arsenal do Investigador: Técnicas Práticas de Coleta
 
 Muitos acham que OSINT é algo complexo e distante, mas a verdade é que realizar uma busca refinada para entender o melhor custo-benefício de um produto já é uma aplicação primitiva do conceito. Porém, profissionalmente, o buraco é mais embaixo. Destacamos três vertentes fundamentais de coleta:
@@ -71,6 +73,7 @@ Coletar a informação é apenas metade do caminho. No ambiente digital, lidamos
 O Código de Processo Civil brasileiro (Art. 369) deixa claro que as provas precisam ser legal e moralmente legítimas. Para arquivos eletrônicos, **o documento original é o digital**; qualquer impressão é mera cópia.
 
 --
+
 ### Como Garantir a Admissibilidade Jurídica?
 
 Para que uma evidência coletada via OSINT não seja descartada pelo juiz, o investigador precisa seguir protocolos internacionais de preservação, como a **ISO/IEC 27037** (diretrizes para identificação, coleta, aquisição e preservação de evidências digitais).
@@ -82,6 +85,7 @@ Para que uma evidência coletada via OSINT não seja descartada pelo juiz, o inv
 3. **Cálculo de Hash (Integridade):** Gerar a assinatura digital (MD5, SHA-256) do arquivo no exato momento da coleta garante que, se um único bit for alterado no futuro, o tribunal saberá que a prova foi violada.
     
 --
+
 ## Conclusão
 
 A Inteligência de Fontes Abertas é uma disciplina poderosa que entrega cerca de **95% do que precisamos saber** em uma investigação se aplicada com critério e competência. No entanto, a linha que separa uma informação útil de uma prova jurídica aceitável é o **rigor metodológico** na preservação da integridade.
@@ -89,8 +93,9 @@ A Inteligência de Fontes Abertas é uma disciplina poderosa que entrega cerca d
 Como profissionais de tecnologia e segurança, nosso papel é garantir que a verdade factual coletada na internet seja blindada contra contestações técnicas e jurídicas.
 
 --
+
 ### Quer se aprofundar na metodologia completa?
 
 Este artigo é um resumo da pesquisa acadêmica que teve como objetivo avaliar a aplicabilidade de informações provenientes de fontes abertas (OSINT) em processos judiciais. Desenvolvido como requisito parcial para a conclusão da especialização em Computação Forense e Segurança da Informação. Para conferir toda a fundamentação legal, análise profunda de ferramentas forenses e a bibliografia completa, você pode ler o material na íntegra.
 
-👉 **[[Link para o PDF Completo do TCC]]**
+👉 **[[[Link para o PDF Completo do TCC](https://lucassouza.io/lab/pesquisa/2025/01/04/Pesquisa-Academica.html)]]**
