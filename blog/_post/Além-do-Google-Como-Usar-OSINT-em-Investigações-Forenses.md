@@ -94,7 +94,7 @@ Como profissionais de tecnologia e segurança, nosso papel é garantir que a ver
 
 --
 
-### Quer se aprofundar na metodologia completa?
+### Quer se aprofundar no estudo completo?
 
 Este artigo é um resumo da pesquisa acadêmica que teve como objetivo avaliar a aplicabilidade de informações provenientes de fontes abertas (OSINT) em processos judiciais. Desenvolvido como requisito parcial para a conclusão da especialização em Computação Forense e Segurança da Informação. Para conferir toda a fundamentação legal, análise profunda de ferramentas forenses e a bibliografia completa, você pode ler o material na íntegra.
 
