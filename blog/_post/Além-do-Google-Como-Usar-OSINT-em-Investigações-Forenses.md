@@ -102,3 +102,13 @@ Como profissionais de tecnologia e segurança, nosso papel é garantir que a ver
 Este artigo é um resumo da pesquisa acadêmica que teve como objetivo avaliar a aplicabilidade de informações provenientes de fontes abertas (OSINT) em processos judiciais. Desenvolvido como requisito parcial para a conclusão da especialização em Computação Forense e Segurança da Informação. Para conferir toda a fundamentação legal, análise profunda de ferramentas forenses e a bibliografia completa, você pode ler o material na íntegra.
 
 👉 **[Link para o PDF Completo do TCC](https://lucassouza.io/lab/pesquisa/2025/01/04/Pesquisa-Academica.html)**
+
+---
+
+<div style="display: flex; align-items: center; gap: 16px; padding: 20px; background: rgba(140, 82, 255, 0.05); border-radius: 16px; border: 1px solid rgba(140, 82, 255, 0.1); margin-top: 40px;">
+    <img src="https://avatars.githubusercontent.com/u/25537761?v=4" alt="Autor" style="width: 60px; height: 60px; border-radius: 50%; border: 2px solid #8C52FF;">
+    <div>
+        <p style="font-weight: 600; margin: 0; color: #ffffff;">Escrito por <a href="https://lucassouza.io" target="_blank" style="color: #8C52FF; text-decoration: none;">Lucas (Ls4ss)</a></p>
+        <p style="font-size: 14px; color: #b0b0c0; margin: 4px 0 0 0;">Especialista em Segurança Ofensiva | Criador da DetecTI</p>
+    </div>
+</div>
