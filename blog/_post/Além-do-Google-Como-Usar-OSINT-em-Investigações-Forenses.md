@@ -6,7 +6,7 @@ Mas aqui está o grande divisor de águas entre um curioso da internet e um prof
 
 Se você acha que fazer OSINT é apenas digitar um nome no Google, este artigo vai expandir seus horizontes. Vamos explorar as principais técnicas de coleta e, mais importante, as estratégias para garantir a **integridade** e **admissibilidade** dessas evidências.
 
---
+---
 
 ## O que é Inteligência (de verdade) na Era Digital?
 
@@ -24,7 +24,7 @@ No contexto investigativo, a **Doutrina Nacional de Inteligência de Segurança 
     
 3. **OSINT (Open Source Intelligence):** Produção de conhecimento baseada em dados públicos e de livre acesso.
     
---
+---
 
 ## O Arsenal do Investigador: Técnicas Práticas de Coleta
 
@@ -67,14 +67,15 @@ site:alvo.com.br filetype:xlsx intext:CPF
 
 _O que isso faz?_ Filtra planilhas Excel indexadas dentro do site do alvo que contenham a palavra "CPF" no texto, expondo potenciais incidentes de vazamento de dados.
 
---
+---
+
 ## O Grande Desafio Forense: A Fragilidade da Prova Digital
 
 Coletar a informação é apenas metade do caminho. No ambiente digital, lidamos com **bits** — elementos intangíveis, voláteis e facilmente mutáveis. Se você simplesmente tirar um _print screen_ de uma tela, essa imagem poderá ser facilmente contestada pela defesa em juízo sob a alegação de adulteração (como um simples "Inspecionar Elemento" no navegador).
 
 O Código de Processo Civil brasileiro (Art. 369) deixa claro que as provas precisam ser legal e moralmente legítimas. Para arquivos eletrônicos, **o documento original é o digital**; qualquer impressão é mera cópia.
 
---
+---
 
 ### Como Garantir a Admissibilidade Jurídica?
 
@@ -86,7 +87,7 @@ Para que uma evidência coletada via OSINT não seja descartada pelo juiz, o inv
     
 3. **Cálculo de Hash (Integridade):** Gerar a assinatura digital (MD5, SHA-256) do arquivo no exato momento da coleta garante que, se um único bit for alterado no futuro, o tribunal saberá que a prova foi violada.
     
---
+---
 
 ## Conclusão
 
@@ -94,7 +95,7 @@ A Inteligência de Fontes Abertas é uma disciplina poderosa que entrega cerca d
 
 Como profissionais de tecnologia e segurança, nosso papel é garantir que a verdade factual coletada na internet seja blindada contra contestações técnicas e jurídicas.
 
---
+---
 
 ### Quer se aprofundar no estudo completo?
 
