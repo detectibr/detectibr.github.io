@@ -41,7 +41,7 @@ O governo é o maior centralizador de dados de uma sociedade. Para investigaçõ
 
 As redes sociais mapeiam rotinas, relacionamentos, conexões corporativas e hábitos. Dentro da OSINT, essa análise focada em redes sociais é chamada de **SOCMINT**.
 
-- **Correlação de Usernames:** Investigados costumam repetir os mesmos "arrobas" em diferentes plataformas. Ferramentas automatizadas como o _WhatsMyName Web_ permitem varrer mais de 200 plataformas simultaneamente para encontrar perfis associados ao mesmo nome de usuário.
+- **Correlação de Usernames:** Investigados costumam repetir os mesmos "arrobas" em diferentes plataformas. Ferramentas automatizadas como o _[WhatsMyName Web](https://whatsmyname.me/)_ permitem varrer mais de 200 plataformas simultaneamente para encontrar perfis associados ao mesmo nome de usuário.
     
 - **Mapeamento Corporativo no LinkedIn:** Excelente para engenharia social e análise de superfície de ataque (Recon). Permite desenhar a estrutura interna de uma empresa, descobrir quem ocupa cargos críticos e coletar e-mails institucionais legítimos.
     
@@ -71,7 +71,7 @@ _O que isso faz?_ Filtra planilhas Excel indexadas dentro do site do alvo que co
 
 ## O Grande Desafio Forense: A Fragilidade da Prova Digital
 
-Coletar a informação é apenas metade do caminho. No ambiente digital, lidamos com **bits** — elementos intangíveis, voláteis e facilmente mutáveis. Se você simplesmente tirar um _print screen_ de uma tela, essa imagem poderá ser facilmente contestada pela defesa em juízo sob a alegação de adulteração (como um simples "Inspecionar Elemento" no navegador).
+Coletar a informação é apenas metade do caminho. No ambiente digital, lidamos com **bits**, elementos intangíveis, voláteis e facilmente mutáveis. Se você simplesmente tirar um _print screen_ de uma tela, essa imagem poderá ser facilmente contestada pela defesa em juízo sob a alegação de adulteração (como um simples "Inspecionar Elemento" no navegador).
 
 O Código de Processo Civil brasileiro (Art. 369) deixa claro que as provas precisam ser legal e moralmente legítimas. Para arquivos eletrônicos, **o documento original é o digital**; qualquer impressão é mera cópia.
 
