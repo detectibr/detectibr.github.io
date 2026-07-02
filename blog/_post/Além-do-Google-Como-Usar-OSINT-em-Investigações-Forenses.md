@@ -12,7 +12,7 @@ Se você acha que fazer OSINT é apenas digitar um nome no Google, este artigo v
 
 Para a Ciência da Informação, existe uma diferença crucial entre **dado bruto** e **inteligência**. Pense em uma pirâmide informacional: na base, temos dados desconexos; no topo, o conhecimento reflexivo.
 
-![alt text](https://raw.githubusercontent.com/detectibr/detectibr.github.io/refs/heads/main/assets/images/piramide-informacional.png)
+![alt text](https://raw.githubusercontent.com/detectibr/detectibr.github.io/refs/heads/main/assets/images/piramide-informacional-neon.png)
 
 > _"Inteligência é toda informação coletada, organizada ou analisada para entender as demandas de um tomador de decisões qualquer."_ – Marco Cepik
 
