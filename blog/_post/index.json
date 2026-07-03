@@ -1,4 +1,11 @@
 [
+        {
+        "slug": "Além-do-Exploit-O-Mindset-Ofensivo-Aplicado-à-Sobrevivência do-Negócio",
+        "title": "Além do Exploit: O Mindset Ofensivo Aplicado à Sobrevivência do Negócio",
+        "date": "2026-07-03",
+        "tags": ["Red Team"],
+        "excerpt": "No ecossistema de segurança da informação, ainda existe uma visão romantizada (e ultrapassada) de que o trabalho de um Red Team se resume a..."
+    },
     {
         "slug": "ThreatTrack-O-melhor-de-3-mundos",
         "title": "ThreatTrack - O melhor de 3 mundos (Shodan + ExploitDB + NVD)",
