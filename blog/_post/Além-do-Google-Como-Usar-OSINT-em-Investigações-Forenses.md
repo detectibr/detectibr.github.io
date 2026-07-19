@@ -1,5 +1,3 @@
-# Print NÃO é prova: Como Usar OSINT em Investigações Forenses Sem Comprometer a Validade Jurídica
-
 Você já parou para pensar em quanta informação sobre pessoas, empresas e infraestruturas está flutuando livremente pela internet neste exato momento? No universo da segurança digital e da computação forense, essa mina de ouro tem nome: **OSINT (Open Source Intelligence)**, ou Inteligência de Fontes Abertas.
 
 Mas aqui está o grande divisor de águas entre um curioso da internet e um profissional de perícia forense ou Red Teaming: **como coletar esses dados públicos de forma que eles realmente sirvam como prova admissível em um tribunal ou relatório oficial?**
