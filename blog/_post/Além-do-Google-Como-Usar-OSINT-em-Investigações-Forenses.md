@@ -58,9 +58,6 @@ O Google possui _web crawlers_ (rastreadores) que indexam quase tudo na internet
 | `inurl:`     | Retorna páginas que contenham o termo diretamente na URL.                 | `inurl:admin/login`                |
 
 **Super Dork (Combinação):**
-
-Plaintext
-
 ```
 site:alvo.com.br filetype:xlsx intext:CPF
 ```
