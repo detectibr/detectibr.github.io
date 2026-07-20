@@ -1,9 +1,16 @@
 [
-        {
+    {
+        "slug": "Print-NAO-e-prova-Aplicacao-do-OSINT-em-Investigações-Forenses",
+        "title": "Print NÃO é prova: Aplicação do OSINT em Investigações Forenses sem Comprometer a Validade Jurídica",
+        "date": "2026-07-20",
+        "tags": ["OSINT/Recon"],
+        "excerpt": "Você já parou para pensar em quanta informação sobre pessoas, empresas e infraestruturas está flutuando livremente pela..."
+    },
+    {
         "slug": "Além-do-Exploit-O-Mindset-Ofensivo-Aplicado-à-Sobrevivência do-Negócio",
         "title": "Além do Exploit: O Mindset Ofensivo Aplicado à Sobrevivência do Negócio",
         "date": "2026-07-03",
-        "tags": ["Red Team"],
+        "tags": ["Red Team"],["R.A.D.A.R"],
         "excerpt": "No ecossistema de segurança da informação, ainda existe uma visão romantizada (e ultrapassada) de que o trabalho de um Red Team se resume a..."
     },
     {
@@ -12,13 +19,6 @@
         "date": "2026-06-25",
         "tags": ["OSINT/Recon"],
         "excerpt": "ThreatTrack é um projeto em Python que tem como objetivo ser uma ferramenta de consulta e análise de segurança em IPs públicos..."
-    },
-    {
-        "slug": "Pesquisa-Academica",
-        "title": "Fontes Abertas de Inteligência (OSINT): Estratégias para Garantir a Integridade e Admissibilidade em Investigações Forenses Digitais",
-        "date": "2025-01-04",
-        "tags": ["OSINT/Recon"],
-        "excerpt": "Esta pesquisa acadêmica teve como objetivo avaliar a aplicabilidade de informações provenientes de fontes abertas (OSINT) em processos judiciais..."
     },
     {
         "slug": "TOTVS-FLuig-Platform-CVE-2020-29134",
